@@ -1,9 +1,9 @@
 -- Enable pgvector
-create extension vector;
+create extension if not exists vector;
 
 -- Create documents table
-create table documents (
-    id bigint primary KEY,
+create table if not exists documents (
+    id bigserial primary KEY,
     content TEXT,
     embedding vector(1536)
 );

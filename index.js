@@ -16,7 +16,7 @@ const supabase = createClient(
 
 app.post("/embed", async (req, res) => {
   try {
-    await generateEmbeddings();
+    await generateAndStoreEmbeddings();
     res.status(200).json({ message: "Successfully Embedded" });
   } catch (error) {
     console.log(error);
@@ -39,7 +39,7 @@ app.post("/query", async (req, res) => {
   }
 });
 
-async function generateEmbeddings() {
+async function generateAndStoreEmbeddings() {
     const loader = new CheerioWebBaseLoader(
       "https://www.inboxpurge.com/faq"
     );
@@ -121,5 +121,5 @@ async function handleQuery(query) {
 }
 
 app.listen("3035", () => {
-  console.log("App is running");
+  console.log("App is running on port 3035");
 });
